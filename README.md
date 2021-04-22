@@ -1,9 +1,6 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+# アプリ概要
+「Bake up」は、製菓製パン業界向けのSNSです。
+カテゴリ別に専門的な情報交換や、独立開業に向けてモチベーションの向上、同じ志をもった仲間を見つける等、様々な活用方法がございます。
 
 * Ruby version
 
