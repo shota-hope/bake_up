@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   get 'pages/show'
-  post '/pages/guest_sign_in', to: 'pages#new_guest'
-
+  devise_scope :user do
+  post '/users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 end
