@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-class Users::registrationsController < Devise::registrationsController
-  before_action :check_guest, only: destroy
+class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :check_guest, only: :destroy
 
   def check_guest
     if resource.email == 'guest@example.com'
