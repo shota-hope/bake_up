@@ -14,4 +14,9 @@ class User < ApplicationRecord
         user.confirmed_at = Time.now
     end
   end
+
+  def feed
+    Post.where("user_id = ?", id)
+  end
+  
 end

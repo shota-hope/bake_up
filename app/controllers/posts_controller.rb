@@ -7,10 +7,17 @@ class PostsController < ApplicationController
        flash[:succuess] = "投稿しました"
        redirect_to root_url
     else
+      @feed_items = current_user.feed.paginate(page: params[:page])
       render 'pages/index'
     end
   end
 
   def destroy
   end
+
+  private
+
+    def post_params
+      params.require(:post).permit(:content)
+    end
 end
