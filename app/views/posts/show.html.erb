@@ -10,7 +10,7 @@
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
 <div>
-  <a href="/users/<%= @post.user.id %>"></a>
+  <%= c.user.username %>
   <%= c.content %>
   <hr>
 </div>
