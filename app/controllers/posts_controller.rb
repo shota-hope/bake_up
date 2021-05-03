@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
-  before_action :sign_in_required, only:[:create, :destroy]
+  before_action :sign_in_required, only:[:show, :create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def show
+    @post = Post.find(params[:id])
+     @comments = @post.comments
+     @comment = Comment.new
+  end
 
   def create
     @post = current_user.posts.build(post_params)
