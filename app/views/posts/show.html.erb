@@ -1,18 +1,24 @@
 <h1>投稿詳細ページ</h1>
-<h3><%= @post.user.email %></h3>
 <h3><%= @post.content %></h3>
-
+<%= image_tag @post.display_image if @post.image.attached? %>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(@post.created_at) %> ago.
+  <% if current_user?(@post.user) %>
+  <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+</span>
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
 <div>
-  <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+  <a href="/users/<%= @post.user.id %>"></a>
   <%= c.content %>
   <hr>
 </div>
 <% end %>
 
-<%= form_for [@post, @comment] do |f| %>
+<%= form_with(model: [@post, @comment], method: :post) do |f| %>
 <%= f.text_field :content %>
+<%= f.hidden_field :post_id, value: @post.id %>
 <br>
 <%= f.submit 'コメントする' %>
 <% end %>
