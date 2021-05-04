@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :comments
   validates :username, presence: true
   validates :email, presence: true
   # Include default devise modules. Others available are:
@@ -18,5 +19,5 @@ class User < ApplicationRecord
   def feed
     Post.where("user_id = ?", id)
   end
-  
+
 end
