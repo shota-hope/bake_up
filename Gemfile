@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'bootstrap-sass'
 gem 'faker'
 gem 'active_storage_validations'
 gem 'image_processing'
