@@ -64,10 +64,15 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    autoprefixer-rails (10.2.4.0)
+      execjs
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
     builder (3.2.4)
@@ -90,6 +95,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.10.0)
+    execjs (2.7.0)
     faker (2.16.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.0)
@@ -228,6 +234,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   bootsnap (>= 1.4.4)
+  bootstrap-sass
   bootstrap-will_paginate
   byebug
   capybara (>= 3.26)
