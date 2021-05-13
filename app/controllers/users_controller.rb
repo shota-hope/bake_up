@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :sign_in_required, only: [:index, :show, :following, :followers]
+  before_action :sign_in_required, only: [:index, :show, :following, :followers, :likes]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -24,4 +24,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def likes
+    @title = "Likes"
+    @user  = User.find(params[:id])
+    @posts = @user.likes.paginate(page: params[:page])
+    render 'show_like'
+  end
 end
