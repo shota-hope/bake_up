@@ -12,10 +12,10 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @user.likes.any? %>
-    <ol class="posts">
-      <%= render @posts %>
-    </ol>
-    <%= will_paginate @posts %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
     <% end %>
   </div>
 </div>

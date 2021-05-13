@@ -1,6 +1,8 @@
 <li id="post<%= post.id %>">
   <%= link_to post.user %>
-  <span class="user"><%= link_to post.user.username, post.user %></span>
+  <span class="user">
+    <%= link_to post.user.username, post.user %>
+  </span>
   <span class="content">
     <%= link_to post.content, "/posts/#{post.id}"  %>
     <%= image_tag post.display_image if post.image.attached? %>
@@ -15,8 +17,8 @@
       <%= render "posts/like", post: post %>
     <% end %>
   </span>
-  
+
   <% if current_user?(post.user) %>
-  <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
+    <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
 </li>

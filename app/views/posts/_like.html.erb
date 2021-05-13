@@ -3,6 +3,6 @@
     <%= hidden_field_tag :post_id, post.id %>
       <%= button_tag(class: "btn btn-default" ) do %>
         <%= content_tag :span, post.liked_by.count, class: "glyphicon glyphicon-heart-empty" %>
-      <% end %>
+     <% end %>
   <% end %>
 <% end %>
