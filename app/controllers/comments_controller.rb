@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.save
+    @post.create_notification_comment!(current_user, @comment.id)
       redirect_back(fallback_location: root_path)
   end
 
