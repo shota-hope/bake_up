@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :likes, through: :favorite_relationships, source: :post
   validates :username, presence: true
   validates :email, presence: true
   # Include default devise modules. Others available are:
@@ -18,7 +20,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: 'guest@example.com', username: 'ゲストユーザー') do |user|
         user.password = SecureRandom.urlsafe_base64
         user.confirmed_at = Time.now
     end
@@ -44,6 +46,18 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+   def like(post)
+    likes << post
+  end
+
+  def unlike(post)
+    favorite_relationships.find_by(post_id: post.id).destroy
+  end
+
+  # 現在のユーザーがいいねしていたらtrueを返す
+  def like?(post)
+    likes.include?(post)
   end
 
 end

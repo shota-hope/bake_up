@@ -26,11 +26,15 @@
       <% end %>
     </nav>
   </header>
-  <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-  <p class="notice"><%= notice %></p>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  <%
+=begin%>
+ <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+<%
+=end%>
 
   <%= yield %>
 </body>
