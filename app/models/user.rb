@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorite_relationships, dependent: :destroy
   has_many :likes, through: :favorite_relationships, source: :post
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   validates :username, presence: true
   validates :email, presence: true
   # Include default devise modules. Others available are:
