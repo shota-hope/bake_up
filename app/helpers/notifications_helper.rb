@@ -1,6 +1,5 @@
 module NotificationsHelper
   def notification_form(notification)
-    @comment = nil
     visitor = link_to notification.visitor.username, notification.visitor, style:"font-weight: bold;"
     your_post = link_to 'あなたの投稿', notification.post, style:"font-weight: bold;", remote: true
     case notification.action
