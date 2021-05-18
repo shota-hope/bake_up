@@ -6,7 +6,7 @@ class CreateFavoriteRelationships < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-     add_index :favorite_relationships, :user_id
+    add_index :favorite_relationships, :user_id
     add_index :favorite_relationships, :post_id
     add_index :favorite_relationships, [:user_id, :post_id], unique: true
   end
