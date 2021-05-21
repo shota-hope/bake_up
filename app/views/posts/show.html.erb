@@ -1,34 +1,38 @@
 <h1>投稿詳細ページ</h1>
 <h2><%= @post.user.username %></h2>
+<span>【カテゴリ】</span>
+<% @post.categories.each do |category| %>
+  <%= category.name %>
+<% end %>
 <h3><%= @post.content %></h3>
 <%= image_tag @post.display_image if @post.image.attached? %>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(@post.created_at) %> ago.
-      <span class="like" id="like_form_<%= @post.id %>">
-        <% if @post.liked_by.include?(current_user) %>
-          <%= render "posts/unlike", post: @post %>
-        <% else %>
-          <%= render "posts/like", post: @post %>
-        <% end %>
-      </span>
-    <% if current_user?(@post.user) %>
-      <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(@post.created_at) %> ago.
+  <span class="like" id="like_form_<%= @post.id %>">
+    <% if @post.liked_by.include?(current_user) %>
+    <%= render "posts/unlike", post: @post %>
+    <% else %>
+    <%= render "posts/like", post: @post %>
     <% end %>
   </span>
+  <% if current_user?(@post.user) %>
+  <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+</span>
 <h2>コメント一覧</h2>
 <% @comments.each do |comment| %>
-  <div>
-    <%= comment.user.username %>
-    <%= comment.content %>
-    <hr>
-  </div>
+<div>
+  <%= comment.user.username %>
+  <%= comment.content %>
+  <hr>
+</div>
 <% end %>
 
 <%= form_with(model: [@post, @comment], method: :post) do |f| %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <br>
-  <%= f.submit 'コメントする' %>
+<%= f.text_field :content %>
+<%= f.hidden_field :post_id, value: @post.id %>
+<br>
+<%= f.submit 'コメントする' %>
 <% end %>
 
 <%= link_to "ホームへ戻る", root_url %>

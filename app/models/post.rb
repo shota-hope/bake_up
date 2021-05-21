@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :favorite_relationships, dependent: :destroy
   has_many :liked_by, through: :favorite_relationships, source: :user
   has_many :notifications, dependent: :destroy
+  has_many :post_category_relations
+  has_many :categories, through: :post_category_relations
   has_one_attached :image
   default_scope -> { order(created_at: :desc)}
   validates :user_id, presence: true
